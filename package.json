@@ -1,5 +1,8 @@
 {
   "name": "burger",
+  "repository": {
+	  "url": "https://github.com/median-man/burger-sequelized.git"
+  },
   "version": "1.0.0",
   "description": "Restaurant app that lets user input the names of burgers they would like to eat.",
   "main": "server.js",
