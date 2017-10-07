@@ -1,0 +1,9 @@
+/* style burger gif */
+#burger-gif {
+	width: 280px;
+}
+
+header .divider {
+	margin-top: 2em;
+	margin-bottom: 4em;
+}
