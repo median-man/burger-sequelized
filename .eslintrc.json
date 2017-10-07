@@ -1,7 +1,13 @@
 {
+	"plugins": [
+		"mocha"
+	],
     "env": {
         "es6": true,
 		"node": true
 	},
-	"extends": "eslint:recommended"
+	"extends": "eslint:recommended",
+	"rules": {
+		"mocha/no-exclusive-tests": "error"
+	}
 }
