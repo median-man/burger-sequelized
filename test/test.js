@@ -1,5 +1,10 @@
+// dependencies
 const chai = require('chai');
-const { should, expect, assert } = chai;
+const { expect } = chai;
+const chaiHttp = require('chai-http');
+chai.use(chaiHttp);
+
+// application modules
 const seed = require('./seed.js');
 
 
