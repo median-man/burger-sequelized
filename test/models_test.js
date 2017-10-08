@@ -144,11 +144,11 @@ describe('db', function() {
 			});
 
 			// run devour and check the devoured property of the test burger
-			it('changes devoured property to false', function(done) {
+			it('changes devoured property to true', function(done) {
 				burger
 					.devour(testBurger.id)
 					.then((result) => {
-						expect(result).to.include({ devoured: false });
+						expect(result).to.include({ devoured: true });
 						done();
 					})
 					.catch(done);

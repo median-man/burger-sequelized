@@ -24,7 +24,7 @@ module.exports = function burger(sequelize, DataTypes) {
 		return Burger
 			.findById(id)
 			.then((result) => {
-				return result.set('devoured', false);
+				return result.update({ devoured: true });
 			});
 	}
 
