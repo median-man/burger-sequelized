@@ -6,6 +6,7 @@ const BodyParser = require("body-parser");
 const MethodOverride = require("method-override");
 const Exphbs = require("express-handlebars");
 const Routes = require("./controllers/burgers_controller.js");
+const db = require("./models");
 
 let app = Express();
 let PORT = process.env.PORT || 8080;
@@ -26,6 +27,14 @@ app.set("view engine", "handlebars");
 // connecting router
 app.use("/", Routes);
 
-app.listen(PORT, () => {
-	console.log("Server listening on: http://localhost:%s", PORT);
-});
+// connect to mysql and start server listening
+db.sequelize
+	.sync( {logging: false })
+	.then( () => {
+		app.listen(PORT, () => {
+			console.log("Server listening on: http://localhost:%s", PORT);
+		});
+	})
+	.catch( reason => {
+		throw reason;
+	});

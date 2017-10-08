@@ -3,7 +3,8 @@
 // =====================================================
 
 const Express = require("express");
-const Burger = require("../models/burger.js"); // model
+const db = require("../models"); // model
+const Burger = db.Burger;
 
 // =====================================================
 // ROUTE HANDLERS
@@ -21,7 +22,10 @@ function addBurger(req, res) {
 
 // Handles a put request to devour a burger and redirects to root.
 function devourBurger(req, res) {
-	Burger.devour(req.params.id)
+	Burger.devour(parseInt(req.params.id))
+		.then(Burger.getAllBurgers)
+		.then( result => {
+		})
 		.then( () => { res.redirect("/"); } )
 		.catch( (reason) => { throw reason; } );
 }
@@ -30,7 +34,13 @@ function devourBurger(req, res) {
 function renderMain(response) {
 	Burger.getAllBurgers()
 		.then((burgers) => {
-
+			burgers = burgers.map( el => {
+				return {
+					id: el.id,
+					burger_name: el.name,
+					devoured: el.devoured
+				};
+			} )
 			// render the page
 			response.render("index", { burgers: burgers });
 		});
