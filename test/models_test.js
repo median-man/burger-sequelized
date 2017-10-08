@@ -175,18 +175,7 @@ describe('db', function() {
 
 
 
-// describe('seed module', function() {
-// 	it('should export a seed method by default', function() {
-// 		expect(seed).to.be.a('function', `seed is a ${typeof seed}`);
-// 	});
-	// describe('seed method', function() {
-	// 	it('seed(')
-		// it('should return a Promise', function() {
-		// 	const seedPromise = seed();
-		// 	expect(seedPromise).to.be.a('Promise', `seed returns a ${typeof seedPromise}`);
-		// });
-	// });
-// });
+
 
 // define globals for eslint
 /* global describe, beforeEach, afterEach, it, expect, after, before */
