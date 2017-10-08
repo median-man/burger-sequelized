@@ -173,9 +173,5 @@ describe('db', function() {
 	});
 });
 
-
-
-
-
 // define globals for eslint
 /* global describe, beforeEach, afterEach, it, expect, after, before */
