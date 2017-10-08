@@ -1,3 +1,5 @@
+process.env.NODE_ENV = process.argv[2];
+
 // dependencies
 const chai = require('chai');
 const { expect } = chai;

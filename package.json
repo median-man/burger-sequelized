@@ -7,7 +7,7 @@
   "description": "Restaurant app that lets user input the names of burgers they would like to eat.",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test",
     "start": "node server.js"
   },
   "author": "John Desrosiers",
