@@ -2,7 +2,7 @@
 A restaurant app that lets users input the names of burgers they would like to eat and track "devoured" burgers.
 
 ## Live Demo
-https://eat-da-burgs.herokuapp.com/
+coming soon
 
 ## Install
 [NodeJS](https://nodejs.org/en/) and [MySql](https://www.mysql.com/S) must be installed to run the application on a local machine.
@@ -10,8 +10,6 @@ https://eat-da-burgs.herokuapp.com/
 ```sh
 $ npm install mysql
 ```
-Use the files found in the 'db' directory to setup the schema and seed the burgers_db MySql database.
-
 Add a username and password to config/connection.js.
 ```js
 else {
@@ -24,17 +22,24 @@ else {
 	};
 }
 ```
+### Seeding the Database
+** CAUTION THIS WILL DESTROY ALL DATA BEFORE ADDING SEEDS **  
+run `npm run seed`
+
+### Testing
+run `npm test`
+Testing coverage includes models and seed modules.
+
 ## Frameworks/Libraries Used
 * [Express](http://expressjs.com/)
-	* [body-parser](https://www.npmjs.com/package/body-parser)
-	* [method-override](https://www.npmjs.com/package/body-parser)
-	* [express-handlebars](https://github.com/ericf/express-handlebars)
-* [handlebars](https://github.com/mysqljs/mysql)
-* [MySql for Node](http://handlebarsjs.com/)
+* [handlebars](http://handlebarsjs.com/)
+* [MySql2 for Node](https://github.com/mysqljs/mysql)
+* [Sequelize](http://docs.sequelizejs.com/)
 * [Spectre.css](https://picturepan2.github.io/spectre/index.html)
+* [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) for testing.
 
 ## Repository
-https://github.com/median-man/burgers
+https://github.com/median-man/burger-sequelized
 
 ## Author
 John Desrosiers
