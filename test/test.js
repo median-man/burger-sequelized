@@ -64,8 +64,39 @@ describe('db', function() {
 		it('has properties for id, name, and devoured', function() {
 			expect(description).to.include.all.keys('id', 'name', 'devoured');
 		});
-	});
 
+		describe('burger.add method', function() {
+			it('passing "tasty" creates a new burger where { name: tasty, devoured: false }', function(done) {
+				const name = 'tasty';
+				burger
+					.add(name)
+					.then((result) => {
+						expect(result).to.include({ name: name, devoured: false });
+						done();
+					})
+					.catch(done);
+			});
+			it('passing ("Cali Burger", true) creates a new burger where { name: tasty, devoured: true }', function(done) {
+				const name = 'Cali Burger';
+				burger
+					.add(name, true)
+					.then((result) => {
+						expect(result).to.include({ name: name, devoured: true });
+						done();
+					})
+					.catch(done);
+			});
+			it('passing ("") will throw an error', function(done) {
+				const name = '';
+				burger
+					.add(name, true)
+					.then((result) => {
+						done(`Promise was unexpectedly fullfilled! result is an instance of ${typeof result}`);
+					})
+					.catch(() => { done(); });
+			});
+		});
+	});
 });
 
 
