@@ -9,9 +9,6 @@ chai.use(chaiHttp);
 // application modules
 const db = require('../models');
 const seed = require('./seed.js');
-const burger = require('../models/burger.js');
-
-// test the Burger module
 
 
 // test the database connection
@@ -33,9 +30,9 @@ describe('db', function() {
 			.catch(done);
 	});
 
-	// it('should have a Burger model', function() {
-	// 	expect(db.sequelize.models).to.have.a.property('Burger');
-	// });
+	it('should have a Burger model', function() {
+		expect(db.sequelize.models).to.have.a.property('Burger');
+	});
 
 });
 
