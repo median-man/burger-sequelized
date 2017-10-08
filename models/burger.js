@@ -15,5 +15,10 @@ module.exports = function burger(sequelize, DataTypes) {
 		return this.create({ name: name, devoured: devoured});
 	} 
 
+	// Returns all burgers from database
+	Burger.getAllBurgers = function getAllBurgers() {
+		return Burger.findAll();
+	}
+
 	return Burger;
 }

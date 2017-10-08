@@ -96,6 +96,33 @@ describe('db', function() {
 					.catch(() => { done(); });
 			});
 		});
+
+		describe('burger.getAllBurgers method', function() {
+			it('returns empty array if there are no burgers', function(done) {
+				burger
+					.getAllBurgers()
+					.then((result) => {
+						expect(result).to.be.an('array');
+						expect(result.length).to.equal(0);
+						done();
+					})
+					.catch(done);
+			});
+
+			// add 3 burgers then test result of getAllBurgers method
+			it('returns array of 3 burgers', function(done) {
+				burger.add('Mammoth')
+					.then(()=> { return burger.add('Brian Head'); })
+					.then(()=> { return burger.add('Kirkwood'); })
+					.then(burger.getAllBurgers)
+					.then((result) => {
+						expect(result).to.be.an('array');
+						expect(result.length).to.equal(3);
+						done();
+					})
+					.catch(done);
+			});
+		});
 	});
 });
 
