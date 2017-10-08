@@ -20,5 +20,13 @@ module.exports = function burger(sequelize, DataTypes) {
 		return Burger.findAll();
 	}
 
+	Burger.devour = function devour(id) {
+		return Burger
+			.findById(id)
+			.then((result) => {
+				return result.set('devoured', false);
+			});
+	}
+
 	return Burger;
 }

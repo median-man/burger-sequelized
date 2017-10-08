@@ -61,10 +61,12 @@ describe('db', function() {
 				.catch(done);
 		});
 
+		// test for field names
 		it('has properties for id, name, and devoured', function() {
 			expect(description).to.include.all.keys('id', 'name', 'devoured');
 		});
 
+		// test add method
 		describe('burger.add method', function() {
 			it('passing "tasty" creates a new burger where { name: tasty, devoured: false }', function(done) {
 				const name = 'tasty';
@@ -97,7 +99,8 @@ describe('db', function() {
 			});
 		});
 
-		describe('burger.getAllBurgers method', function() {
+		// run some tests on the getAllBurgers method
+		describe('getAllBurgers method', function() {
 			it('returns empty array if there are no burgers', function(done) {
 				burger
 					.getAllBurgers()
@@ -123,15 +126,59 @@ describe('db', function() {
 					.catch(done);
 			});
 		});
+
+		// test the devour method
+		describe('devour method', function() {
+
+			// add a burger and get the id for the added burger
+			let testBurger;
+			beforeEach(function(done) {
+				burger
+					.add('Mammoth')
+					.then((result) => {
+						testBurger = result;
+						done();
+					})
+					.catch(done);
+			});
+
+			// must be a function
+			it('is a function', function() {
+				expect(burger.devour).to.be.a('function');
+			});
+
+			// run devour and check the devoured property of the test burger
+			it('changes devoured property to false', function(done) {
+				burger
+					.devour(testBurger.id)
+					.then((result) => {
+						expect(result).to.include({ devoured: false });
+						done();
+					})
+					.catch(done);
+			});
+
+			// promise does not satify if an id not found in the burger table is
+			// passed to devour
+			it('throws an error if id is not found', function(done) {
+				const invalidId = 500;
+				burger
+					.devour(invalidId)
+					.then((result) => {
+						done(`Promise unexpectedly satisfied. result: ${result}`);
+					})
+					.catch(() => { done(); });
+			});
+		});
 	});
 });
 
 
 
-describe('seed module', function() {
-	it('should export a seed method by default', function() {
-		expect(seed).to.be.a('function', `seed is a ${typeof seed}`);
-	});
+// describe('seed module', function() {
+// 	it('should export a seed method by default', function() {
+// 		expect(seed).to.be.a('function', `seed is a ${typeof seed}`);
+// 	});
 	// describe('seed method', function() {
 	// 	it('seed(')
 		// it('should return a Promise', function() {
@@ -139,7 +186,7 @@ describe('seed module', function() {
 		// 	expect(seedPromise).to.be.a('Promise', `seed returns a ${typeof seedPromise}`);
 		// });
 	// });
-});
+// });
 
 // define globals for eslint
 /* global describe, beforeEach, afterEach, it, expect, after, before */
